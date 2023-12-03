@@ -7,7 +7,7 @@ const Success = () => {
 
   useEffect(() => {
     if (sessionId) {
-      fetch(`http://localhost:5000/success?session_id=${sessionId}`)
+      fetch(`https://stripe-payment-mu.vercel.app/success?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

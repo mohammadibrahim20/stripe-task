@@ -15,12 +15,10 @@ const CheckOutFrom = () => {
   };
   console.log(cart);
   const makePayment = async () => {
-    const stripe = await loadStripe(
-      "pk_test_51NEXj4G65CnbWJkOYvtYi5qysCY146nNz9c77rP9O8sg6luZ7UjeyAKHHSGof6LggjELyPsIFg7GjNREqchoFqPh008F9ttHSM"
-    );
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PB_KEY);
 
     const response = await fetch(
-      "http://localhost:5000/create-checkout-session",
+      "https://stripe-payment-mu.vercel.app/create-checkout-session",
       {
         method: "POST",
         headers: {

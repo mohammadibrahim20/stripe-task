@@ -58,8 +58,8 @@ app.post("/create-checkout-session", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url: `http://localhost:5173/success/{CHECKOUT_SESSION_ID}`,
-    cancel_url: `http://localhost:5173/cancel`,
+    success_url: `https://incandescent-chebakia-947651.netlify.app/success/{CHECKOUT_SESSION_ID}`,
+    cancel_url: `https://incandescent-chebakia-947651.netlify.app/cancel`,
   });
   res.json({ id: session.id });
 });
@@ -70,10 +70,6 @@ app.get("/success", async (req, res) => {
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
-
-    // sendPaymentConfirmationEmail(session);
-    // makeInvoice(session);
-    // sendPaymentConfirmationEmail(session);
     res.send(session);
   } catch (error) {
     console.error(error);
